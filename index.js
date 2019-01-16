@@ -63,11 +63,11 @@ app.get('/countries', checkAuth, (req, res) => {
 });
 
 app.put('/countries', checkAuth, (req, res) => {
-   const { countryName } = req.body;
-   if(countryName !== ''){
-    countries.push(countryName);
+   const { country } = req.body;
+   if(country !== ''){
+    countries.push(country);
     res.status(200).json({
-      newItem : countryName,
+      newCountry : country,
     });
    } else {
      res.status(401).json({
@@ -79,7 +79,11 @@ app.put('/countries', checkAuth, (req, res) => {
 });
 
 app.delete('/countries', checkAuth, (req, res) => {
-  res.send('delete country');
+  const { country } = req.body;
+  countries.pop(country);
+  res.json({
+    countries,
+  });
 });
 
 
