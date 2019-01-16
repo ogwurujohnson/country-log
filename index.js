@@ -80,10 +80,19 @@ app.put('/countries', checkAuth, (req, res) => {
 
 app.delete('/countries', checkAuth, (req, res) => {
   const { country } = req.body;
-  countries.pop(country);
-  res.json({
-    countries,
-  });
+  const check = countries.includes(country);
+  if(check){
+    countries.pop(country);
+    res.status(200).json({
+      status: 'Successful',
+      countries,
+    });
+  } else {
+    res.status(404).json({
+      message: 'country not found',
+    });
+  }
+  
 });
 
 
