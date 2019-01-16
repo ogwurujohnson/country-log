@@ -21,16 +21,16 @@ app.get('/', (req,res) => {
   res.status(200).send('WELCOME TRAVELLER');
 });
 
-const userName = 'admin';
-const password = 'admin';
+const savedUserName = 'admin';
+const savedPassword = 'admin';
 
 app.post('/login',(req,res) => {
-  const { user, pass } = req.body;
+  const { username, password } = req.body;
   const data = {
-    user: user,
-    pass: pass
+    user: username,
+    pass: password
   };
-  if(user === userName && pass === password){
+  if(username === savedUserName && password === savedPassword){
     jwt.sign({data}, secret, {expiresIn: '24h'}, (err,token) => {
       res.status(200).json({
         status: 'Successful',
