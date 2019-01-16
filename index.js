@@ -11,7 +11,13 @@ app.get('/', (req,res) => {
   res.status(200).send('welcome traveller');
 });
 
-app.post('/login',)
+const userName = 'admin';
+const password = 'admin';
+
+app.post('/login',(req,res) => {
+  const { user, pass } = req.body;
+  res.send(`welcome ${submittedUsername}`);
+});
 
 
 const port = 3000 || process.env.PORT;
