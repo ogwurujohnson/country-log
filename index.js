@@ -96,7 +96,7 @@ app.delete('/countries', checkAuth, (req, res) => {
 });
 
 
-const port = 3000 || process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.listen(port,()=>{
   console.log(`you are live on 127.0.0.1:${port}`);
